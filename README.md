@@ -1,33 +1,28 @@
-> _Fork_ deze leertaak en ga aan de slag. Onderstaande outline ga je gedurende deze taak in jouw eigen GitHub omgeving uitwerken. De instructie vind je in: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md)
+# Tools
+* Visual Studio Code (Code editor)
+* Google Chrome (Browser)
+* Technieken
+* EJS
+* HTML
+* CSS
+* Node js
+* Javascript
+* JSON
 
-# Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+# Installatie
+Clone of download deze respository (fork)
 
-## Inhoudsopgave
+Openen op je code editor
 
-  * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
-  * [Kenmerken](#kenmerken)
-  * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
-  * [Licentie](#licentie)
+* 2.1 Dit kun je doen bij < code > (github), open met github desktop
 
-## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+* 2.2 Via Github Desktop kun je dit project dan kiezen
 
-## Gebruik
-<!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+* 2.3 Rechter muisknop > Open in Visual Stude Code, bijvoorbeeld (code editor)
 
-## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
-
-## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
-
-## Bronnen
-
-## Licentie
-
-This project is licensed under the terms of the [MIT license](./LICENSE).
+Voordat je iets kunt veranderen, moet je eerst Node js instaleren, omdat we met een API werken 3.1 Installeer: nodejs.org (Node 20.11.0 LTS,)
+Wanneer je dit geinstaleerd hebt moet je hem nog in je code editor installeren
+Open terminal, en type npm install > installeerd Node js
+Om de site te bekijken, type je in de terminal: npm start
+Wanneer je wijzigingen aanbrengt in de server.js, moet je in de terminal het resetten met control c en daarna weer npm start om het project te bekijken
+Nu kun je aan mijn repo werken!
