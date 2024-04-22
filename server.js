@@ -7,6 +7,9 @@ import fetchJson from './helpers/fetch-json.js'
 // Stel het basis endpoint in
 const apiUrl = "https://fdnd-agency.directus.app/items/"
 const apiItem = (apiUrl + 'oba_item')
+const apiUser = (apiUrl + 'oba_profile')
+const families = (apiUrl + '/oba_family')
+
 
 // Maak een nieuwe express app aan
 const app = express()
@@ -33,6 +36,14 @@ app.listen(app.get('port'), function () {
 })
 
 app.get('/', function (request, response) {
+    fetchJson(apiUser).then((apiUser) => {
+        response.render('user_select',{
+            apiUser: apiUser.data
+        })
+    })
+})
+
+app.get('/home', function (request, response) {
     fetchJson(apiItem).then((items) => {
         response.render('homepage',{
             items: items.data,
