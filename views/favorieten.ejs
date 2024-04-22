@@ -1,0 +1,18 @@
+<%- include('partials/head')%>
+<%- include('partials/navigatie')%>
+
+<body>
+    <main>
+
+        <ul>
+            <% items.forEach(item => { %>
+                <li>
+                    <h3><%= item.title %></h3>
+                </li>
+            <% }); %>
+        </ul>
+        
+    </main>
+</body>
+
+<%- include('partials/footer')%>

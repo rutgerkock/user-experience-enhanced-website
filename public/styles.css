@@ -46,7 +46,7 @@ span {
 }
 
 header {
-    height: 10vh;
+    height: 9vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -58,6 +58,7 @@ header {
     flex-direction: row;
     z-index: 999;
     position: fixed;
+    background-color: var(--primary-background-color);
 }
 
 header details {
@@ -387,4 +388,26 @@ footer ul li a {
 .user_select img:hover {
     cursor: pointer;
     scale: 1.1;
+}
+
+.profile_avatar {
+    width: 4rem;
+    height: 4rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #0064c8;
+    border-radius: 0 0 0 1rem;
+    z-index: 9999;
+    align-items: top;
+    display: flex;
+    justify-content: right;
+}
+
+.profile_avatar img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: 0 0 0 1rem;
 }

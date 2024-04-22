@@ -52,9 +52,63 @@ app.get('/home', function (request, response) {
     })
 })
 
+app.get('/home/:id', function(request, response){
+    const userId = request.params.id;
+    Promise.all([
+        fetchJson(apiUser + `?filter={"id":${userId}}`),
+        fetchJson(apiItem)
+    ]).then(([userResponse, itemsResponse]) => {
+        const user = userResponse.data[0];
+        const items = itemsResponse.data;
+
+        const linkedItemIds = user.linked_item || [];
+
+        const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
+        console.log("Linked Item IDs:", linkedItemIds);
+        console.log("Filtered Linked Items:", linkedItems);
+        response.render('homepage', {
+            data: items,
+            user: user,
+            items: linkedItems,
+            profileName: user ? user.name : null
+        });
+        
+    }).catch((error) => {
+        console.error("Error fetching data:", error);
+        response.status(500).send("Error fetching data");
+    });
+});
+
+app.get('/favorieten/:id', function(request, response){
+    const userId = request.params.id;
+    Promise.all([
+        fetchJson(apiUser + `?filter={"id":${userId}}`),
+        fetchJson(apiItem)
+    ]).then(([userResponse, itemsResponse]) => {
+        const user = userResponse.data[0];
+        const items = itemsResponse.data;
+
+        const linkedItemIds = user.linked_item || [];
+
+        const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
+        console.log("Linked Item IDs:", linkedItemIds);
+        console.log("Filtered Linked Items:", linkedItems);
+        response.render('favorieten', {
+            data: items,
+            user: user,
+            items: linkedItems,
+            profileName: user ? user.name : null
+        });
+        
+    }).catch((error) => {
+        console.error("Error fetching data:", error);
+        response.status(500).send("Error fetching data");
+    });
+});
+
 
 app.get('/detail/:id', function(request, response){
-    fetchJson(apiItem + '?filter={"id":' + request.params.id + '}').then((items) => {
+    fetchJson(apiUser + '?filter={"id":' + request.params.id + '}').then((items) => {
         response.render('detail', {
             items: items.data
         });
