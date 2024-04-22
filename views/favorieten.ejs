@@ -3,8 +3,12 @@
 
 <body>
     <main>
-
-        <ul>
+        <style>
+            .favorieten {
+                padding: 10rem;
+            }
+        </style>
+        <ul class="favorieten">
             <% items.forEach(item => { %>
                 <li>
                     <h3><%= item.title %></h3>
