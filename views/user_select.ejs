@@ -5,11 +5,11 @@
     <ul class="user_select">
     <% apiUser.forEach(function(profile) { %>
         <li>
-            <img 
-            onclick="window.location.href='/home/<%= profile.id %>'"
-            src="https://fdnd-agency.directus.app/assets/<%= profile.avatar%>"
-            />
-
+            <picture>
+                <source srcset="https://fdnd-agency.directus.app/assets/<%= profile.avatar%> %>?format=avif" media="(max-width: 160px)" type="image/avif">
+                <source srcset="https://fdnd-agency.directus.app/assets/<%= profile.avatar%>?format=webp" type="image/webp">
+                <img onclick="window.location.href='/home/<%= profile.id %>'"src="https://fdnd-agency.directus.app/assets/<%= profile.avatar%>"/>
+            </picture>
             <h2><%= profile.name %></h2>
             
         </li>
