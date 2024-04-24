@@ -14,7 +14,11 @@
 <ul class="<%= listClass %>">
     <% data.filter(dataItem => dataItem.item_type === item).forEach(filteredItem => { %>
         <li onclick="window.location.href='./detail/<%= filteredItem.id %>'">
-            <img src="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>" alt="<%= filteredItem.title %> Image">
+            <picture>
+                <source srcset="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>?format=avif" type="image/avif">
+                <source srcset="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>?format=webp" type="image/webp">
+                <img src="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>" alt="<%= filteredItem.title %> Image">
+            </picture>
             <div>
                 <h3><%= filteredItem.title.length > 22 ? filteredItem.title.slice(0, 22) + '...' : filteredItem.title %></h3>
                 <p><%= filteredItem.auteur %></p>

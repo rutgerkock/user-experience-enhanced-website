@@ -8,7 +8,6 @@ import fetchJson from './helpers/fetch-json.js'
 const apiUrl = "https://fdnd-agency.directus.app/items/"
 const apiItem = (apiUrl + 'oba_item')
 const apiUser = (apiUrl + 'oba_profile')
-const families = (apiUrl + '/oba_family')
 
 
 // Maak een nieuwe express app aan
@@ -79,32 +78,17 @@ app.get('/home/:id', function(request, response){
     });
 });
 
-app.get('/favorieten/:id', function(request, response){
+
+app.get('/favorieten/:id', function(request, response) {
     const userId = request.params.id;
-    Promise.all([
-        fetchJson(apiUser + `?filter={"id":${userId}}`),
-        fetchJson(apiItem)
-    ]).then(([userResponse, itemsResponse]) => {
-        const user = userResponse.data[0];
-        const items = itemsResponse.data;
-
-        const linkedItemIds = user.linked_item || [];
-
-        const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
-        console.log("Linked Item IDs:", linkedItemIds);
-        console.log("Filtered Linked Items:", linkedItems);
-        response.render('favorieten', {
-            data: items,
-            user: user,
-            items: linkedItems,
-            profileName: user ? user.name : null
-        });
-        
+    fetchJson(apiUser + `/${userId}?fields=*,linked_item.oba_item_id.*`).then((userData) => {
+        response.render('favorieten', { data: userData.data });
     }).catch((error) => {
-        console.error("Error fetching data:", error);
-        response.status(500).send("Error fetching data");
+        console.error("Error fetching user data:", error);
+        response.status(500).send("Error fetching user data");
     });
 });
+
 
 
 app.get('/detail/:id', function(request, response){
