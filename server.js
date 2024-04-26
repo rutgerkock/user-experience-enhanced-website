@@ -58,11 +58,7 @@ app.get('/home/:id', function(request, response){
         fetchJson(apiItem)
     ]).then(([userResponse, itemsResponse]) => {
         const user = userResponse.data[0];
-        const items = itemsResponse.data;
-
-        const linkedItemIds = user.linked_item || [];
-        const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
-        
+        const items = itemsResponse.data;        
         response.render('homepage', {
             data: items,
             user: user,
