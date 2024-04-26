@@ -91,8 +91,8 @@ app.get('/favorieten/:id', function(request, response) {
 
 
 
-app.get('/detail/:id', function(request, response){
-    fetchJson(apiUser + '?filter={"id":' + request.params.id + '}').then((items) => {
+app.get('/home/detail/:id', function(request, response){
+    fetchJson(apiItem + '?filter={"id":' + request.params.id + '}').then((items) => {
         response.render('detail', {
             items: items.data
         });
