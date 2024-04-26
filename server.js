@@ -64,7 +64,6 @@ app.get('/home/:id', function(request, response){
         const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
         
         response.render('homepage', {
-            data: items,
             items: linkedItems,
         });
         
