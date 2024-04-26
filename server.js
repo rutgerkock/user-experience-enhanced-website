@@ -70,9 +70,6 @@ app.get('/home/:id', function(request, response){
             profileName: user ? user.name : null
         });
         
-    }).catch((error) => {
-        console.error("Error fetching data:", error);
-        response.status(500).send("Error fetching data");
     });
 });
 
@@ -81,9 +78,6 @@ app.get('/favorieten/:id', function(request, response) {
     const userId = request.params.id;
     fetchJson(apiUser + `/${userId}?fields=*,linked_item.oba_item_id.*`).then((userData) => {
         response.render('favorieten', { data: userData.data });
-    }).catch((error) => {
-        console.error("Error fetching user data:", error);
-        response.status(500).send("Error fetching user data");
     });
 });
 
