@@ -66,8 +66,7 @@ app.get('/home/:id', function(request, response){
         response.render('homepage', {
             data: items,
             user: user,
-            items: linkedItems,
-            profileName: user ? user.name : 'OBA lid'
+            profileName: user ? user.name : null
         });
         
     });
