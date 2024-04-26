@@ -64,8 +64,10 @@ app.get('/home/:id', function(request, response){
         const items = itemsResponse.data;
 
         const linkedItemIds = user.linked_item || [];
+
         const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
-        
+        console.log("Linked Item IDs:", linkedItemIds);
+        console.log("Filtered Linked Items:", linkedItems);
         response.render('homepage', {
             data: items,
             user: user,
@@ -89,8 +91,8 @@ app.get('/favorieten/:id', function(request, response) {
 
 
 
-app.get('/home/detail/:id', function(request, response){
-    fetchJson(apiItem + '?filter={"id":' + request.params.id + '}').then((items) => {
+app.get('/detail/:id', function(request, response){
+    fetchJson(apiUser + '?filter={"id":' + request.params.id + '}').then((items) => {
         response.render('detail', {
             items: items.data
         });
