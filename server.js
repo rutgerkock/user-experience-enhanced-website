@@ -62,7 +62,7 @@ app.get('/home/:id', function(request, response){
         response.render('homepage', {
             data: items,
             user: user,
-            profileName: user ? user.name : null
+            profileName: user ? user.name : 'gebruiker'
         });
         
     });
