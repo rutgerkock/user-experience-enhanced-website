@@ -64,7 +64,10 @@ app.get('/home/:id', function(request, response){
         const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
         
         response.render('homepage', {
+            data: items,
+            user: user,
             items: linkedItems,
+            profileName: user ? user.name : 'OBA lid'
         });
         
     });
