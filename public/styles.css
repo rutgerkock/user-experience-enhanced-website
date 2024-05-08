@@ -396,8 +396,8 @@ footer ul li a {
 
 .heart-button button {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0;
+    right: 0;
     width: 40px;
     height: 40px;
     background: none;
@@ -405,7 +405,7 @@ footer ul li a {
     cursor: pointer;
     padding: 0;
     background-color: var(--primary-accent-color);
-    border-radius: 0.5rem 1rem 0.5rem 0.5rem;
+    border-radius: 0 1rem 0 1rem;
 }
 
 .heart-button svg {
@@ -415,9 +415,14 @@ footer ul li a {
 
 .heart-button:hover svg {
     fill: #f00; 
-    transform: scale(1.1); 
+    transform: scale(1.2); 
 }
 
 .heart-button:active svg {
-    transform: scale(0.9); 
+    transform: scale(0.8); 
+}
+
+
+.active {
+    color: #000;;
 }

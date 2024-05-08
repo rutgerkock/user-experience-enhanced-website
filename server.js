@@ -8,6 +8,7 @@ import fetchJson from './helpers/fetch-json.js'
 const apiUrl = "https://fdnd-agency.directus.app/items/"
 const apiItem = (apiUrl + 'oba_item')
 const apiUser = (apiUrl + 'oba_profile')
+const likes = []
 
 
 // Maak een nieuwe express app aan
@@ -60,7 +61,7 @@ app.get('/home/:id', function(request, response){
         
         const user = userResponse.data[0];
         const items = itemsResponse.data;
-        
+
         response.render('homepage', {
             data: items,
             user: user,
@@ -91,3 +92,4 @@ app.get('/home/detail/:id', function(request, response){
         });
     })
 })
+
