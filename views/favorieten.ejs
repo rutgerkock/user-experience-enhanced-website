@@ -11,10 +11,11 @@
             }
         </style>
         <h1>De favorieten van <span><%= data.name %></span></h1>
-        <HT class="favorieten">
+        <ul class="favorieten">
             <% data.linked_item.forEach(item => { %>
                 <li>
                     <h3><%= item.oba_item_id.title %></h3>
+                    <p><%= item.oba_item_id.id %></p>
                 </li>
             <% }); %>
         </ul>

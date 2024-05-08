@@ -57,17 +57,10 @@ app.get('/home/:id', function(request, response){
         fetchJson(apiUser + `?filter={"id":${userId}}`),
         fetchJson(apiItem)
     ]).then(([userResponse, itemsResponse]) => {
-        console.log('User Response:', userResponse);
-        console.log('Items Response:', itemsResponse);
         
         const user = userResponse.data[0];
         const items = itemsResponse.data;
-
-        const linkedItemIds = user.linked_item || [];
-
-        const linkedItems = items.filter(item => linkedItemIds.includes(item.id));
-        console.log("Linked Item IDs:", linkedItemIds);
-        console.log("Filtered Linked Items:", linkedItems);
+        
         response.render('homepage', {
             data: items,
             user: user,
