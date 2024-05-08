@@ -12,3 +12,12 @@ function scrollList(direction, listSelector, scrollAmount) {
 }
 
 
+function addToFavorites(itemId) {
+    fetch('/add-to-list', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ item_id: itemId }),
+    })
+}

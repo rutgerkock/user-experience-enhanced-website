@@ -1,38 +1,39 @@
-<div>
-    <h2><%= title %> <span> <%= title_span %> </span></h2>
-    <p>
-        <%= description %>
-    </p>
-    <a href="#"><%= linkText %></a>
-</div>
+    <div>
+        <h2><%= title %> <span> <%= title_span %> </span></h2>
+        <p>
+            <%= description %>
+        </p>
+        <a href="#"><%= linkText %></a>
+    </div>
 
-<div class="buttons">
-    <button onclick="scrollList('left', '<%= listClass %>', 200)">⬅️</button>
-    <button onclick="scrollList('right', '<%= listClass %>', 200)">➡️</button>
-</div>
+    <div class="buttons">
+        <button onclick="scrollList('left', '<%= listClass %>', 200)">⬅️</button>
+        <button onclick="scrollList('right', '<%= listClass %>', 200)">➡️</button>
+    </div>
 
-<ul class="<%= listClass %>">
-    <% data.filter(dataItem => dataItem.item_type === item).forEach(filteredItem => { %>
-        <li>
-            <picture>
-                <form class="heart-button" method="post">
-                    <button type="button" name="submit" value="" class="heart-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <path class="filled" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5c0-2.5 2.02-4.5 4.5-4.5 1.74 0 3.29.99 4.5 2.45C13.21 4.49 14.76 3.5 16.5 3.5 18.98 3.5 22 5.5 22 8.5c0 3.78-3.4 6.86-8.55 11.53L12 21.35z"/>
-                            <path d="M0 0h24v24H0z" fill="none"/>
-                        </svg>
-                    </button>
-                </form>
-                <a href="./detail/<%= filteredItem.id %>">
-                    <source srcset="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>?format=avif" type="image/avif">
-                    <source srcset="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>?format=webp" type="image/webp">
-                    <img loading="lazy" src="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>" alt="<%= filteredItem.title %> Image">
-                </a>
-            </picture>
-            <div>
-                <h3><%= filteredItem.title.length > 22 ? filteredItem.title.slice(0, 22) + '...' : filteredItem.title %></h3>
-                <p><%= filteredItem.auteur %></p>
-            </div>
-        </li>
-    <% }); %>
-</ul>
+    <ul class="<%= listClass %>">
+        <% data.filter(dataItem => dataItem.item_type === item).forEach(filteredItem => { %>
+            <li>
+                <picture>
+                    <form class="heart-button" method="post" >
+                        <button onclick="console.log('itemId:', '<%= filteredItem.id %>'); addToFavorites('<%= filteredItem.id %>')" type="button" class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path class="filled" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5c0-2.5 2.02-4.5 4.5-4.5 1.74 0 3.29.99 4.5 2.45C13.21 4.49 14.76 3.5 16.5 3.5 18.98 3.5 22 5.5 22 8.5c0 3.78-3.4 6.86-8.55 11.53L12 21.35z"/>
+                                <path d="M0 0h24v24H0z" fill="none"/>
+                            </svg>
+                        </button>
+                    </form>
+                    
+                    <a href="./detail/<%= filteredItem.id %>">
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>?format=avif" type="image/avif">
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>?format=webp" type="image/webp">
+                        <img loading="lazy" src="https://fdnd-agency.directus.app/assets/<%= filteredItem.afbeelding %>" alt="<%= filteredItem.title %> Image">
+                    </a>
+                </picture>
+                <div>
+                    <h3><%= filteredItem.title.length > 22 ? filteredItem.title.slice(0, 22) + '...' : filteredItem.title %></h3>
+                    <p><%= filteredItem.auteur %></p>
+                </div>
+            </li>
+        <% }); %>
+    </ul>

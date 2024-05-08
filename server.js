@@ -8,8 +8,6 @@ import fetchJson from './helpers/fetch-json.js'
 const apiUrl = "https://fdnd-agency.directus.app/items/"
 const apiItem = (apiUrl + 'oba_item')
 const apiUser = (apiUrl + 'oba_profile')
-const likes = []
-
 
 // Maak een nieuwe express app aan
 const app = express()
@@ -34,6 +32,16 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
+
+const itemList = [];
+
+app.post('/add-to-list', function(request, response) {
+    const itemId = request.body.item_id;
+    itemList.push(itemId);
+    console.log(itemList);
+});
+
+
 
 app.get('/', function (request, response) {
     fetchJson(apiUser).then((apiUser) => {
@@ -74,16 +82,12 @@ app.get('/home/:id', function(request, response){
     });
 });
 
-
-
 app.get('/favorieten/:id', function(request, response) {
     const userId = request.params.id;
     fetchJson(apiUser + `/${userId}?fields=*,linked_item.oba_item_id.*`).then((userData) => {
         response.render('favorieten', { data: userData.data });
     });
 });
-
-
 
 app.get('/home/detail/:id', function(request, response){
     fetchJson(apiItem + '?filter={"id":' + request.params.id + '}').then((items) => {
@@ -92,4 +96,3 @@ app.get('/home/detail/:id', function(request, response){
         });
     })
 })
-
